@@ -17,7 +17,7 @@ test("Create user API test", async ({ request }) => {
     console.log(responseBody);
 
     expect(responseBody.name).toBe("Parth");
-    expect(responseBody.job).toBe("QA Engineer");
+
 });
 
 

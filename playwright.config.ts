@@ -12,7 +12,7 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
 
-  /* Opt out of parallel tests on CI */
+  /* Use one worker on CI */
   workers: process.env.CI ? 1 : undefined,
 
   /* Reporter */
@@ -20,10 +20,16 @@ export default defineConfig({
 
   /* Shared settings */
   use: {
-    /* Run browser in headed mode */
-    headless: false,
+    /*
+     * Local machine:
+     *   headless = false → browser is visible
+     *
+     * GitHub Actions:
+     *   headless = true → no GUI required
+     */
+    headless: !!process.env.CI,
 
-    /* Slow down execution so you can see actions */
+    /* Slow down execution locally */
     launchOptions: {
       slowMo: 500,
     },
@@ -57,35 +63,5 @@ export default defineConfig({
         ...devices['Desktop Safari'],
       },
     },
-
-    // Mobile Testing
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    // Microsoft Edge
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-
-    // Google Chrome
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
   ],
-
-  /* Start local dev server before tests (optional) */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://localhost:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
 });

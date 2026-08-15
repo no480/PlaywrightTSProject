@@ -1,8 +1,8 @@
 import { expect, test } from '@playwright/test'
 import { LoginPage } from '../Pages/LoginPage';
-import {readCSV} from '../Utils/CSVReader';
+import { readCSV } from '../Utils/csvReader';
 
-const loginData = readCSV('./test-data/LoginData.csv'); 
+const loginData = readCSV('./Test-data/LoginData.csv');
 
 loginData.forEach((data: any) => {
 

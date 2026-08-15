@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
+import { LoginPage } from '../Pages/LoginPage';
 import { LoginData, readExcel } from '../Utils/excelReader.ts';
 
 const testData: LoginData[] = readExcel('./test-data/LoginData.xlsx', 'Sheet1');

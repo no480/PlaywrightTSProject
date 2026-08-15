@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { LoginPage } from '../pages/LoginPage'
+import { LoginPage } from '../Pages/LoginPage';
 import {readCSV} from '../Utils/CSVReader';
 
 const loginData = readCSV('./test-data/LoginData.csv'); 

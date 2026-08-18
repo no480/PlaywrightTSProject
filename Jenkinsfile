@@ -28,3 +28,5 @@ pipeline {
         }
     }
 }
+
+// Testing Jenkins automatic build
